@@ -8,6 +8,7 @@ import CreateManufacturer from './CreateManufacturer';
 import ListModels from './ModelList';
 import CreateModel from './CreateModel';
 import TechniciansList from './TechnicianList';
+import CreateTech from './CreateTechnician';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           </Route>
           <Route path="technicians">
             <Route path="" element={<TechniciansList />} />
-            {/* <Route path="new" element={<CreateModel />} /> */}
+            <Route path="new" element={<CreateTech />} />
           </Route>
         </Routes>
       </div>
