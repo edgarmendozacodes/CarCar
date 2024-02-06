@@ -3,15 +3,17 @@ import { useEffect, useState } from 'react';
 function ListModels() {
     const [models, setModels] = useState([]);
 
-    useEffect(()=>{const getData = async () => {
+    useEffect(()=>{const getModelData = async () => {
         const response = await fetch('http://localhost:8100/api/models/');
 
         if (response.ok) {
             const data = await response.json();
             setModels(data.models)
+        } else {
+          alert("Error fetching models data");
         }
     }
-        getData()
+        getModelData()
     }, [])
 
     return (
