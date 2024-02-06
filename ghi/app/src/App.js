@@ -7,6 +7,7 @@ import ListManufacturers from './ManufacturerList';
 import CreateManufacturer from './CreateManufacturer';
 import ListModels from './ModelList';
 import CreateModel from './CreateModel';
+import TechniciansList from './TechnicianList';
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route path="models">
             <Route path="" element={<ListModels />} />
             <Route path="new" element={<CreateModel />} />
+          </Route>
+          <Route path="technicians">
+            <Route path="" element={<TechniciansList />} />
+            {/* <Route path="new" element={<CreateModel />} /> */}
           </Route>
         </Routes>
       </div>
