@@ -29,6 +29,7 @@ class AppointmentDetailEncoder(ModelEncoder):
     properties = [
         "id",
         "vin",
+        "customer",
         "date_time",
         "reason",
         "technician",

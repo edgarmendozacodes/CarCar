@@ -9,6 +9,8 @@ import ListModels from './ModelList';
 import CreateModel from './CreateModel';
 import TechniciansList from './TechnicianList';
 import CreateTech from './CreateTechnician';
+import CreateAppointment from './CreateAppointment';
+import ListAppointments from './AppointmentList';
 
 function App() {
   return (
@@ -30,6 +32,10 @@ function App() {
           <Route path="technicians">
             <Route path="" element={<TechniciansList />} />
             <Route path="new" element={<CreateTech />} />
+          </Route>
+          <Route path="appointments">
+            <Route path="" element={<ListAppointments />} />
+            <Route path="new" element={<CreateAppointment />} />
           </Route>
         </Routes>
       </div>
