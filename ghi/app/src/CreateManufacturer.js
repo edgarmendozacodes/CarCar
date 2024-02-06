@@ -42,7 +42,7 @@ return (
         <input value={name} onChange={handleNameChange} placeholder='Name' required type='text' name='name' id='name' className='form-control'/>
         <label htmlFor='name'>Name</label>
         </div>
-        <button className='btn btn-primary'>Add Manufacturer</button>
+        <button className='btn btn-primary'>Create</button>
         </form>
     </div>
 </div>

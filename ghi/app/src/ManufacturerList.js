@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function ListManufacturers() {
   const [manufacturers, setManufacturers] = useState([]);
 
-  async function fetchManufactures() {
+  useEffect(() => {async function fetchManufactures() {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
     const response = await fetch(manufacturersUrl);
 
@@ -14,8 +14,6 @@ function ListManufacturers() {
       alert("Error fetching manufacturer data");
     }
   }
-
-  useEffect(() => {
     fetchManufactures();
   }, []);
 
@@ -29,7 +27,7 @@ function ListManufacturers() {
           </tr>
         </thead>
         <tbody>
-          {manufacturers?.map((manufacturer) => {
+          {manufacturers.map((manufacturer) => {
             return (
               <tr key={manufacturer.id}>
                 <td>{manufacturer.name}</td>
