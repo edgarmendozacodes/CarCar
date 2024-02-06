@@ -5,7 +5,7 @@ function AutomobileForm() {
     const [color, setColor] = useState('')
     const [year , setYear ] = useState('')
     const [vin , setVin ] = useState('')
-    const [sold , setSold] = useState('')
+    // const [sold , setSold] = useState('')
     const [model , setModel ] = useState('')
     const [models , setModels] = useState([])
 
@@ -24,17 +24,17 @@ function AutomobileForm() {
         setVin(value);
     }
 
-    const handleSoldChange = (event) => {
-        const value = event.target.value;
-        setSold(value);
-    }
+    // const handleSoldChange = (event) => {
+    //     const value = event.target.value;
+    //     setSold(value);
+    // }
 
     const handleModelChange = (event) => {
         const value = event.target.value;
         setModel(value);
     }
 
-    const fetchData = async () => {
+    const getData = async () => {
         const modelUrl = 'http://localhost:8100/api/models/'
 
         const response = await fetch(modelUrl)
@@ -53,10 +53,10 @@ function AutomobileForm() {
             data.color = color;
             data.year = year; 
             data.vin = vin;
-            data.sold = sold;
-            data.model = model; // is this model in Models or model_id from views/api_automobiles
+            // data.sold = sold;
+            data.model_id = model; // is this model in Models or model_id from views/api_automobiles
     
-        const automobileUrl = 'http://localhost:8100/api/automobiles';
+        const automobileUrl = 'http://localhost:8100/api/automobiles/';
     
         const fetchConfig = {
             method: "post",
@@ -66,19 +66,23 @@ function AutomobileForm() {
             },
         };
     
+        console.log(data);
         const response = await fetch(automobileUrl, fetchConfig);
         if (response.ok) {
+            const newAutomobile = await response.json();
+            console.log(newAutomobile);
             setColor('');
             setYear('');
             setVin('');
-            setSold('');
+            // setSold('');
             setModel('');
         };
     }
 
     useEffect(() => {
-        fetchData()
+        getData()
     }, []);
+
     return (
         <div className="row">
             <div className="offset-3 col-6">
@@ -102,13 +106,13 @@ function AutomobileForm() {
                             <label htmlFor="vin">VIN</label>
                         </div>
 
-                        <div className="form-floating mb-3">
+                        {/* <div className="form-floating mb-3">
                             <input onChange={handleSoldChange} value={sold} placeholder="Sold" required type="text" name="sold" id="sold" className="form-control" />
                             <label htmlFor="sold">Sold</label>
-                        </div>
+                        </div> */}
                         
                         <div className="mb-3">
-                            <select value={model} onChange={handleModelChange} placeholder="Model" name="model" id="model" className="form-select">
+                            <select onChange={handleModelChange} value={model} placeholder="Model" name="model" id="model" className="form-select">
                             <option value=""> Choose a model ...  </option>
                             {models?.map(model => {
                                 return (

@@ -44,8 +44,8 @@ return (
                         <td>{ auto.color }</td>
                         <td>{ auto.year }</td>
                         <td>{ auto.model.name }</td>
-                        <td>{ auto.manufacturer.name }</td>
-                        <td>{ auto.sold }</td>
+                        <td>{ auto.manufacturer }</td>
+                        <td>< input type ="checkbox" checked={ auto.sold }/></td>
                         {/* Above Code may need to be revisited for correction (model/manufacturer/sold) */}
                     </tr>
                     );
