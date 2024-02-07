@@ -40,7 +40,7 @@ function SearchList () {
             <h1 className='text-center'>Service History</h1>
         </div>
         <div className="input-group mb-3">
-            <input onChange={handleSearchChange} type="text" className="form-control" placeholder="Search by VIN..." aria-label="Search by VIN..." aria-describedby="button-addon2" />
+            <input onChange={handleSearchChange} type="text" className="form-control" placeholder="Search by VIN..." aria-label="Search by VIN..." aria-describedby="button-addon2" autoComplete='off' id='search' name='search' />
             <button onClick={handleSearchSubmit} className="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
         </div>
         <div>

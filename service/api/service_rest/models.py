@@ -29,8 +29,8 @@ class Appointment(models.Model):
         self.status = "Finished"
         self.save()
 
-    def cancelled(self):
-        self.status = "Cancelled"
+    def canceled(self):
+        self.status = "Canceled"
         self.save()
 
     def __str__(self):

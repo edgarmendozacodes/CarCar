@@ -5,15 +5,6 @@ import json
 from common.json import ModelEncoder
 from .models import Appointment, AutomobileVO, Technician
 
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "id",
-        "vin",
-        "sold"
-    ]
-
-
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
@@ -146,9 +137,9 @@ def  api_finished_appointments(request, id):
 
 
 @require_http_methods(["PUT"])
-def  api_cancelled_appointments(request, id):
+def  api_canceled_appointments(request, id):
     appointment = get_object_or_404(Appointment, id=id)
-    appointment.cancelled()
+    appointment.canceled()
     return JsonResponse(
         appointment,
         encoder=AppointmentDetailEncoder,

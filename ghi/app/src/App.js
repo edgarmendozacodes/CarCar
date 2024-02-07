@@ -13,35 +13,38 @@ import CreateAppointment from './CreateAppointment';
 import ListAppointments from './AppointmentList';
 import SearchList from './ServiceHistory';
 
+
 function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="automobiles/list/" element={<AutomobileList/>} />
-          <Route path="automobiles/create/" element={<AutomobileForm/>} />
-          <Route path="manufacturers">
-            <Route path="" element={<ListManufacturers />} />
-            <Route path="new" element={<CreateManufacturer />} />
-          </Route>
-          <Route path="models">
-            <Route path="" element={<ListModels />} />
-            <Route path="new" element={<CreateModel />} />
-          </Route>
-          <Route path="technicians">
-            <Route path="" element={<TechniciansList />} />
-            <Route path="new" element={<CreateTech />} />
-          </Route>
-          <Route path="appointments">
-            <Route path="" element={<ListAppointments />} />
-            <Route path="new" element={<CreateAppointment />} />
-            <Route path="history" element={<SearchList />} />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Nav />
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="automobiles/list/" element={<AutomobileList/>} />
+                    <Route path="automobiles/create/" element={<AutomobileForm/>} />
+                    <Route path="manufacturers">
+                        <Route path="" element={<ListManufacturers />} />
+                        <Route path="new" element={<CreateManufacturer />} />
+                    </Route>
+                    <Route path="models">
+                        <Route path="" element={<ListModels />} />
+                        <Route path="new" element={<CreateModel />} />
+                    </Route>
+                    <Route path ="service">
+                      <Route path="history" element={<SearchList />} />
+                      <Route path="technicians">
+                          <Route path="" element={<TechniciansList />} />
+                          <Route path="new" element={<CreateTech />} />
+                      </Route>
+                      <Route path="appointments">
+                        <Route path="" element={<ListAppointments />} />
+                        <Route path="new" element={<CreateAppointment />} />
+                    </Route>
+                    </Route>
+                </Routes>
+          </div>
+      </BrowserRouter>
   );
 }
 
