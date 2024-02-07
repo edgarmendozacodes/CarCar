@@ -13,9 +13,6 @@ class AutomobileVOEncoder(ModelEncoder):
         "sold"
     ]
 
-    def get_extra_data(self, o):
-        return {"vin": o.vin}
-
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -64,7 +61,7 @@ def api_list_technicians(request):
             )
         except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "Could not create the technician"},
+                {"message": "Could not create technician"},
                 status=400
             )
 
@@ -101,7 +98,8 @@ def api_list_appointments(request):
         try:
             content = json.loads(request.body)
             if AutomobileVO.objects.filter(vin=content["vin"]).exists():
-                content["sold"]= True
+                auto = AutomobileVO.objects.get(vin=content["vin"])
+                content["sold"] = auto.sold
             technician_id = content["technician"]
             technician = Technician.objects.get(id=technician_id)
             content["technician"] = technician
@@ -114,7 +112,7 @@ def api_list_appointments(request):
                 )
         except Appointment.DoesNotExist:
             return JsonResponse(
-                {"message": "Could not create the appointment."},
+                {"message": "Could not create appointment."},
                 status=400
             )
 
@@ -133,7 +131,7 @@ def api_show_appointments(request, id):
         appointment = get_object_or_404(Appointment, id=id)
         appointment.delete()
         return JsonResponse(
-            {"message": "Appointment was deleted"}
+            {"message": "Appointment deleted"}
             )
 
 @require_http_methods(["PUT"])
