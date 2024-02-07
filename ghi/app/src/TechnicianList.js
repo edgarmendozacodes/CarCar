@@ -16,31 +16,31 @@ function TechniciansList() {
         getData();
     }, [])
 
-    const handleDelete = async (techId) => {
-        const response = await fetch(`http://localhost:8080/api/technicians/${techId}`, {
-          method: 'DELETE',
-        });
-        try{
-          if (response.ok) {
-            getData();
-        }}catch(e){
-          console.log("Error Deleting Item", e)
-        }
-      }
+    // const handleDelete = async (techId) => {
+    //     const response = await fetch(`http://localhost:8080/api/technicians/${techId}`, {
+    //       method: 'DELETE',
+    //     });
+    //     try{
+    //       if (response.ok) {
+    //         getData();
+    //     }}catch(e){
+    //       console.log("Error Deleting Item", e)
+    //     }
+    //   }
 
     return (
         <div>
             <div className="row">
                 <div className="offset-3 col-8">
                     <div className="shadow p-4 mt-4">
-                    <h1>Technicians</h1>
+                    <h1 className='text-center'>Technicians</h1>
                     <table className="table table-striped">
-                        <thead>
+                        <thead className="table-success">
                             <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Employee ID</th>
-                            <th>Delete Technician</th>
+                            {/* <th>Delete Technician</th> */}
                             </tr>
                         </thead>
                     <tbody>
@@ -50,9 +50,9 @@ function TechniciansList() {
                                 <td>{tech.first_name}</td>
                                 <td>{tech.last_name}</td>
                                 <td>{tech.employee_id}</td>
-                                <td>
+                                {/* <td>
                                     <button onClick={() => handleDelete(tech.id)} className="btn btn-danger">Delete</button>
-                                </td>
+                                </td> */}
                                 </tr>
                             );
                         })}

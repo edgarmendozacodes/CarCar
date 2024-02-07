@@ -20,7 +20,7 @@ function ListModels() {
         <>
         <table className="table table-striped">
           <thead>
-            <tr>
+            <tr className="table-success">
               <th>Name</th>
               <th>Manufacturer</th>
               <th>Picture</th>

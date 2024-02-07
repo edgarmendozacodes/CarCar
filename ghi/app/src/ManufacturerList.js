@@ -22,7 +22,7 @@ function ListManufacturers() {
       <h1>Manufacturers</h1>
       <table className="table table-striped">
         <thead>
-          <tr>
+          <tr className="table-success">
             <th>Name</th>
           </tr>
         </thead>

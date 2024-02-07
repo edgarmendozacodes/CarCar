@@ -11,12 +11,27 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default=False)
 
 class Appointment(models.Model):
-    date_time = models.DateTimeField()
-    reason = models.CharField(max_length=200)
-    vin = models.CharField(max_length=17)
+    date_time = models.DateTimeField(blank=True)
+    reason = models.TextField()
+    status = models.CharField(max_length=10, blank=True)
+    vin = models.CharField(max_length=100)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
         Technician,
-        related_name="+",
-        on_delete=models.CASCADE
+        related_name="appointment",
+        blank=True,
+        on_delete=models.PROTECT,
     )
+    sold = models.BooleanField(default=False, blank=True)
+
+
+    def finished(self):
+        self.status = "Finished"
+        self.save()
+
+    def cancelled(self):
+        self.status = "Cancelled"
+        self.save()
+
+    def __str__(self):
+        return self.customer

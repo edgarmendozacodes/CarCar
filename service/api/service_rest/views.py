@@ -13,6 +13,9 @@ class AutomobileVOEncoder(ModelEncoder):
         "sold"
     ]
 
+    def get_extra_data(self, o):
+        return {"vin": o.vin}
+
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -33,6 +36,8 @@ class AppointmentDetailEncoder(ModelEncoder):
         "date_time",
         "reason",
         "technician",
+        "status",
+        "sold",
     ]
     encoders = {
         "technician": TechnicianEncoder(),
@@ -95,9 +100,12 @@ def api_list_appointments(request):
     else:
         try:
             content = json.loads(request.body)
+            if AutomobileVO.objects.filter(vin=content["vin"]).exists():
+                content["sold"]= True
             technician_id = content["technician"]
             technician = Technician.objects.get(id=technician_id)
             content["technician"] = technician
+            content["status"] = "Created"
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
@@ -109,6 +117,7 @@ def api_list_appointments(request):
                 {"message": "Could not create the appointment."},
                 status=400
             )
+
 
 
 @require_http_methods(["GET", "DELETE"])
@@ -126,3 +135,24 @@ def api_show_appointments(request, id):
         return JsonResponse(
             {"message": "Appointment was deleted"}
             )
+
+@require_http_methods(["PUT"])
+def  api_finished_appointments(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    appointment.finished()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentDetailEncoder,
+        safe=False,
+    )
+
+
+@require_http_methods(["PUT"])
+def  api_cancelled_appointments(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    appointment.cancelled()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentDetailEncoder,
+        safe=False,
+    )
