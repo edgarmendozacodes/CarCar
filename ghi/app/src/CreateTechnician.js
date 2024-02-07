@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CreateTech(){
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [employeeId, setEmployeeId] = useState('');
-
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -26,13 +27,13 @@ function CreateTech(){
             }
         };
 
-
         const response = await fetch(technicianUrl, fetchConfig);
         if( response.ok){
             setFirstName('');
             setLastName('');
             setEmployeeId('');
         }
+        navigate('/service/technicians')
     }
 
 

@@ -6,12 +6,12 @@ function ListModels() {
 
     useEffect(()=>{const getModelData = async () => {
         const response = await fetch('http://localhost:8100/api/models/');
-
+        try{
         if (response.ok) {
             const data = await response.json();
             setModels(data.models)
-        } else {
-            alert("Error fetching models data");
+        }} catch(e) {
+            console.log("Error fetching models list");
         }
     }
         getModelData()

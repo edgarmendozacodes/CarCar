@@ -7,11 +7,14 @@ function SearchList () {
 
     const getSearchData = async () => {
         const response = await fetch('http://localhost:8080/api/appointments/');
+        try{
         if (response.ok) {
             const data = await response.json();
             setAppointments(data.appointments);
             setSearchVin('');
-        }
+        } }catch(e) {
+            console.log("Error fetching appointments", e)
+          }
     };
 
     useEffect(()=>{

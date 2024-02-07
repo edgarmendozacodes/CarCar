@@ -7,15 +7,11 @@ function ListManufacturers() {
   useEffect(() => {async function fetchManufactures() {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
     const response = await fetch(manufacturersUrl);
-
     if (response.ok) {
       const data = await response.json();
       setManufacturers(data.manufacturers);
-    } else {
-      alert("Error fetching manufacturer data");
     }
   }
-
     fetchManufactures();
   }, []);
 

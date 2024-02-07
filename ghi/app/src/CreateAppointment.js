@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CreateAppointment(){
 
@@ -8,7 +9,7 @@ function CreateAppointment(){
     const [date, setDate] = useState('');
     const [tech, setTech] = useState('');
     const [reason, setReason] = useState('');
-
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -38,17 +39,24 @@ function CreateAppointment(){
             setTech('');
             setReason('');
         }
+        navigate('/service/appointments')
     }
 
 
     const getTechData = async () => {
         const response = await fetch('http://localhost:8080/api/technicians/');
+        try{
         if (response.ok) {
             const data = await response.json();
             setTechnicians(data.technician)
+        }} catch(e) {
+            console.log("Error fetching technician list")
         }
     }
 
+    useEffect(() => {
+        getTechData();
+    }, []);
 
     const handleVinChange = (event) => {
         setVin(event.target.value)
@@ -73,12 +81,6 @@ function CreateAppointment(){
     const handleReasonChange = (event) => {
         setReason(event.target.value)
     }
-
-
-    useEffect(() => {
-        getTechData();
-    }, []);
-
 
     return (
         <>
