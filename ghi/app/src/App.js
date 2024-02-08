@@ -36,30 +36,30 @@ function App() {
           <Route path="sales">
             <Route path="list" element={<ListAllSales />} />
             <Route path="create" element={<FormAllSales />} />
-            <Route path="history" element={<ListSaleHistory />} />
+            {/* <Route path="history" element={<ListSaleHistory />} /> */}
           </Route>
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="automobiles/list/" element={<AutomobileList/>} />
-                    <Route path="automobiles/create/" element={<AutomobileForm/>} />
-                    <Route path="manufacturers">
-                        <Route path="" element={<ListManufacturers />} />
-                        <Route path="new" element={<CreateManufacturer />} />
-                    </Route>
-                    <Route path="models">
-                        <Route path="" element={<ListModels />} />
-                        <Route path="new" element={<CreateModel />} />
-                    </Route>
-                    <Route path ="service">
-                      <Route path="history" element={<SearchList />} />
-                      <Route path="technicians">
-                          <Route path="" element={<TechniciansList />} />
-                          <Route path="new" element={<CreateTech />} />
-                      </Route>
-                      <Route path="appointments">
-                        <Route path="" element={<ListAppointments />} />
-                        <Route path="new" element={<CreateAppointment />} />
-                    </Route>
-                    </Route>
+              <Route path="/" element={<MainPage />} />
+              <Route path="automobiles/list/" element={<AutomobileList/>} />
+              <Route path="automobiles/create/" element={<AutomobileForm/>} />
+              <Route path="manufacturers">
+                  <Route path="" element={<ListManufacturers />} />
+                  <Route path="new" element={<CreateManufacturer />} />
+              </Route>
+              <Route path="models">
+                  <Route path="" element={<ListModels />} />
+                  <Route path="new" element={<CreateModel />} />
+              </Route>
+              <Route path ="service">
+                <Route path="history" element={<SearchList />} />
+                <Route path="technicians">
+                    <Route path="" element={<TechniciansList />} />
+                    <Route path="new" element={<CreateTech />} />
+                </Route>
+                <Route path="appointments">
+                  <Route path="" element={<ListAppointments />} />
+                  <Route path="new" element={<CreateAppointment />} />
+              </Route>
+              </Route>
           <Route path="manufacturers">
             <Route path="" element={<ListManufacturers />} />
             <Route path="new" element={<CreateManufacturer />} />

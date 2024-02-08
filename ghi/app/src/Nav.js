@@ -11,7 +11,7 @@ function Nav() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item-dropdown">
-                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href={() => false}> Inventory </a>
+                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"> Inventory </a>
                             <ul className="dropdown-menu">
                                 <li><NavLink className="dropdown-item" to="/automobiles/list/"> Automobile List</NavLink></li>
                                 <li><NavLink className="dropdown-item" to="/automobiles/create/"> Add Automobile </NavLink></li>
@@ -22,7 +22,7 @@ function Nav() {
                             </ul>
                     </li>
                     <li className="nav-item-dropdown">
-                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href={() => false}> Sales </a>
+                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"> Sales </a>
                             <ul className="dropdown-menu">
                                 <li><NavLink className="dropdown-item" to="salesperson/create/"> Add Sales Person </NavLink></li>
                                 <li><NavLink className="dropdown-item" to="customer/list/"> List Customers </NavLink></li>
@@ -33,7 +33,7 @@ function Nav() {
                             </ul>
                     </li>
                     <li className="nav-item-dropdown">
-                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href={() => false}> Service </a>
+                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"> Service </a>
                             <ul className="dropdown-menu">
                                 <li><NavLink className="dropdown-item" to="/service/appointments/"> Appointments </NavLink></li>
                                 <li><NavLink className="dropdown-item" to="/service/appointments/new/"> Add Appointment </NavLink></li>
