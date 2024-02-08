@@ -21,16 +21,17 @@ function Nav() {
                                 <li><NavLink className="dropdown-item" to="/models/new/"> Add Model </NavLink></li>
                             </ul>
                     </li>
-                    {/* <li className="nav-item-dropdown">
+                    <li className="nav-item-dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Sales </a>
                             <ul className="dropdown-menu">
-                                <li><NavLink className="dropdown-item" to="????"> Add Sales Person </NavLink></li>
-                                <li><NavLink className="dropdown-item" to="????"> Add Customer </NavLink></li>
-                                <li><NavLink className="dropdown-item" to="????"> Create Sales Record </NavLink></li>
-                                <li><NavLink className="dropdown-item" to="????"> All Sales </NavLink></li>
-                                <li><NavLink className="dropdown-item" to="????"> Sales by Person </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="salesperson/create/"> Add Sales Person </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="customer/list/"> List Customers </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="customer/create/"> Add Customer </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="sales/create/"> Create Sales Record </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="sales/list/"> All Sales </NavLink></li>
+                                <li><NavLink className="dropdown-item" to="sales/history/"> Sales by Person </NavLink></li>
                             </ul>
-                    </li> */}
+                    </li>
                     <li className="nav-item-dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Service </a>
                             <ul className="dropdown-menu">
