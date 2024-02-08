@@ -3,6 +3,8 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import AutomobileList from './AutomobileList';
 import AutomobileForm from './AutomobileForm';
+import SalesPersonForm from './SalesPersonForm';
+import SalesPersonList from './SalesPersonList';
 import ListManufacturers from './ManufacturerList';
 import CreateManufacturer from './CreateManufacturer';
 import ListModels from './ModelList';
