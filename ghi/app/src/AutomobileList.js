@@ -19,8 +19,7 @@ function AutomobileList() {
       }, []); // dependency array; if empty, only run once NOT forever
 
 return (
-    <div className="row">
-    <div className="offset-3 col-6">
+
         <div className="shadow p-4 mt-4">
             <h1> Automobiles </h1>
             
@@ -53,8 +52,7 @@ return (
                 </tbody>
             </table>
         </div>    
-    </div>
-</div>
+
 );
 }
 export default AutomobileList;

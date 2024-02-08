@@ -24,6 +24,21 @@ function Nav() {
                         <li><NavLink className="dropdown-item" to="/salesperson/create/"> Add a Salesperson </NavLink></li>
                       </ul>
               </li>
+              <li className="nav-item-dropdown"> 
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Customers </a>
+                      <ul className="dropdown-menu">
+                        <li><NavLink className="dropdown-item" to="/customer/list/"> Customer List</NavLink></li>
+                        <li><NavLink className="dropdown-item" to="/customer/create/"> Add a Customer </NavLink></li>
+                      </ul>
+              </li>
+              <li className="nav-item-dropdown"> 
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Sales </a>
+                      <ul className="dropdown-menu">
+                        <li><NavLink className="dropdown-item" to="/sales/list/"> Sale List</NavLink></li>
+                        <li><NavLink className="dropdown-item" to="/sales/create/"> Add a Sale </NavLink></li>
+                        <li><NavLink className="dropdown-item" to="/sales/history/"> Sales History </NavLink></li>
+                      </ul>
+              </li>
 
           <li className="nav-item">
               <NavLink className="nav-link" to="manufacturers">Manufacturers</NavLink>

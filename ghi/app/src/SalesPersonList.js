@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 
 function SalesPersonList() {
-    const [salespeople, setSalespeople] = useState([]);
+    const [salespersons, setSalesPersons] = useState([]);
 
     const fetchData = async () => {
             const url = 'http://localhost:8090/api/salespeople/';
             const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
-                setSalespeople(data.salespeople);
+                setSalesPersons(data.salespeople);
             } 
         }
 
@@ -17,8 +17,6 @@ function SalesPersonList() {
     }, []);
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1> Salespeople List </h1>
                     <table className="table table-striped">
@@ -30,18 +28,17 @@ function SalesPersonList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {salespeople.map((salesperson) => (
-                                <tr key={salesperson.id}>
-                                    <td>{salesperson.first_name}</td>
-                                    <td>{salesperson.last_name}</td>
-                                    <td>{salesperson.employee_id}</td>
+                            {salespersons?.map((salespeople) => (
+                                <tr key={salespeople.id}>
+                                    <td>{salespeople.first_name}</td>
+                                    <td>{salespeople.last_name}</td>
+                                    <td>{salespeople.employee_id}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
+
     );
 }
 

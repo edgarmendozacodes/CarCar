@@ -9,6 +9,11 @@ import ListManufacturers from './ManufacturerList';
 import CreateManufacturer from './CreateManufacturer';
 import ListModels from './ModelList';
 import CreateModel from './CreateModel';
+import CustomerList from './CustomerList';
+import CustomerForm from './CustomerForm';
+import ListAllSales from './ListAllSales';
+import FormAllSales from './FormAllSales';
+import ListSaleHistory from './ListSalesHistory';
 
 function App() {
   return (
@@ -21,6 +26,15 @@ function App() {
           <Route path="automobiles/create/" element={<AutomobileForm/>} />
           <Route path="salesperson/list/" element={<SalesPersonList/>} />
           <Route path="salesperson/create/" element={<SalesPersonForm/>} />
+          <Route path="customer/list/" element={<CustomerList/>} />
+          <Route path="customer/create/" element={<CustomerForm/>} />
+          <Route path="sales">
+            <Route path="list" element={<ListAllSales />} />
+            <Route path="create" element={<FormAllSales />} />
+            <Route path="history" element={<ListSaleHistory />} />
+          </Route>
+
+
           <Route path="manufacturers">
             <Route path="" element={<ListManufacturers />} />
             <Route path="new" element={<CreateManufacturer />} />
