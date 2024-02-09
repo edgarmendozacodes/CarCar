@@ -4,7 +4,7 @@ CarCar is an application designed for automobile dealerships to manage their inv
 
 Team:
 
-* Edgar Mendoza - Sales
+* Edgar - Sales
 * Dylin - Service
 
 ## How to Run The Project:
@@ -788,150 +788,152 @@ The Sales microservice contains
 Sales is built using 4 models: Sales, Salesperson, Customer, and AutomobileVO. AutomobileVO is a Value Object that polls the monolith to recieve data every 60 seconds regarding inventory. 
 
 Sales:
-- Tracks sale price, sold vehicle's VIN, sales person and customer 
-    
+
     CREATE SALE
-    Method: POST
-    Endpoint: http://localhost:8090/api/sales/
-    Body: JSON
-    Sample Content:
 
-        {
-            "automobile": "5YJ3E1EAXJF033340",
-            "salesperson": "1",
-            "customer": "2",
-            "price": "10000"
-        }
-        
+        Method: POST
+        Endpoint: http://localhost:8090/api/sales/
+        Body: JSON
+        Sample Content:
+
+            {
+                "automobile": "5YJ3E1EAXJF033340",
+                "salesperson": "1",
+                "customer": "2",
+                "price": "10000"
+            }
+            
     VIEW SALES
-    Method: GET
-    Endpoint: http://localhost:8090/api/sales/
-    Body: JSON
-    Sample Content:
+        Method: GET
+        Endpoint: http://localhost:8090/api/sales/
+        Body: JSON
+        Sample Content:
 
-        {
-            "sales": [
-                {
-                    "id": 1,
-                    "automobile": {
-                        "id": 3,
-                        "vin": "5TFEM5F11EX067924",
-                        "sold": false
-                    },
-                    "salesperson": {
+            {
+                "sales": [
+                    {
                         "id": 1,
-                        "first_name": "Edgar ",
-                        "last_name": "Mendoza",
-                        "employee_id": "5959"
+                        "automobile": {
+                            "id": 3,
+                            "vin": "5TFEM5F11EX067924",
+                            "sold": false
+                        },
+                        "salesperson": {
+                            "id": 1,
+                            "first_name": "Edgar ",
+                            "last_name": "Mendoza",
+                            "employee_id": "5959"
+                        },
+                        "customer": {
+                            "id": 1,
+                            "first_name": "Edgar",
+                            "last_name": "Mendoza",
+                            "address": "01 Gold St",
+                            "phone_number": "555-555-5555"
+                        },
+                        "price": "10000"
                     },
-                    "customer": {
-                        "id": 1,
-                        "first_name": "Edgar",
-                        "last_name": "Mendoza",
-                        "address": "01 Gold St",
-                        "phone_number": "555-555-5555"
-                    },
-                    "price": "10000"
-                },
-                {
-                    "id": 14,
-                    "automobile": {
-                        "id": 2,
-                        "vin": "5YJ3E1EAXJF033340",
-                        "sold": false
-                    },
-                    "salesperson": {
-                        "id": 4,
-                        "first_name": "Lewis",
-                        "last_name": "Tharon",
-                        "employee_id": "3123"
-                    },
-                    "customer": {
-                        "id": 2,
-                        "first_name": "Margot",
-                        "last_name": "Robbie",
-                        "address": "123 White House Ln",
-                        "phone_number": "5556667777"
-                    },
-                    "price": "15000"
-                }
-            ]
-        }
+                    {
+                        "id": 14,
+                        "automobile": {
+                            "id": 2,
+                            "vin": "5YJ3E1EAXJF033340",
+                            "sold": false
+                        },
+                        "salesperson": {
+                            "id": 4,
+                            "first_name": "Lewis",
+                            "last_name": "Tharon",
+                            "employee_id": "3123"
+                        },
+                        "customer": {
+                            "id": 2,
+                            "first_name": "Margot",
+                            "last_name": "Robbie",
+                            "address": "123 White House Ln",
+                            "phone_number": "5556667777"
+                        },
+                        "price": "15000"
+                    }
+                ]
+            }
 
 
 Salesperson/Salespeople:
-- Tracks salesperson's first name, last name and employee id
 
     CREATE SALESPERSON
-    Method: POST
-    Endpoint: http://localhost:8090/api/salespeople/
-    Body: JSON
-    Sample Content:
 
-        {
-            "first_name": "Lewis",
-            "last_name": "Tharon",
-            "employee_id": "3123"
-        }
-        
-    LIST SALESPEOPLE
-    Method: GET
-    Endpoint: http://localhost:8090/api/salespeople/
-    Body: JSON
-    Sample Content:
-        {
-            "salesperson": {
-                "id": 4,
+        Method: POST
+        Endpoint: http://localhost:8090/api/salespeople/
+        Body: JSON
+        Sample Content:
+
+            {
                 "first_name": "Lewis",
                 "last_name": "Tharon",
                 "employee_id": "3123"
             }
-        }
+        
+    LIST SALESPEOPLE
+
+        Method: GET
+        Endpoint: http://localhost:8090/api/salespeople/
+        Body: JSON
+        Sample Content:
+            {
+                "salesperson": {
+                    "id": 4,
+                    "first_name": "Lewis",
+                    "last_name": "Tharon",
+                    "employee_id": "3123"
+                }
+            }
 
 Customer(s): 
-- Tracks potential customers first name, last name, address, and phone number.
+
     
     CREATE CUSTOMER
-    Method: POST
-    Endpoint: http://localhost:8090/api/customers/
-    Body: JSON
-    Sample Content:
 
-        {
-            "first_name": "Margot",
-            "last_name": "Robbie",
-            "address": "123 White House Ln",
-            "phone_number": "5556667777"
-        }
+        Method: POST
+        Endpoint: http://localhost:8090/api/customers/
+        Body: JSON
+        Sample Content:
+
+            {
+                "first_name": "Margot",
+                "last_name": "Robbie",
+                "address": "123 White House Ln",
+                "phone_number": "5556667777"
+            }
 
     LIST CUSTOMERS
-    Method: GET
-    Endpoint: http://localhost:8090/api/customers/
-    Body: JSON
-    Sample Content: 
-        
-        {
-	    "customers": [
-		{
-			"id": 1,
-			"first_name": "Edgar",
-			"last_name": "Mendoza",
-			"address": "01 Gold St",
-			"phone_number": "555-555-5555"
-		},
-		{
-			"id": 2,
-			"first_name": "Margot",
-			"last_name": "Robbie",
-			"address": "123 White House Ln",
-			"phone_number": "5556667777"
-		}
-	    ]
-    }
+
+        Method: GET
+        Endpoint: http://localhost:8090/api/customers/
+        Body: JSON
+        Sample Content: 
+            
+            {
+            "customers": [
+            {
+                "id": 1,
+                "first_name": "Edgar",
+                "last_name": "Mendoza",
+                "address": "01 Gold St",
+                "phone_number": "555-555-5555"
+            },
+            {
+                "id": 2,
+                "first_name": "Margot",
+                "last_name": "Robbie",
+                "address": "123 White House Ln",
+                "phone_number": "5556667777"
+            }
+            ]
+        }
 
 AutomobileVO:
+--------
 - Consists of VIN Number, has no API endpoint.
 
 - A GET request is made very 60 seconds 
-
-
