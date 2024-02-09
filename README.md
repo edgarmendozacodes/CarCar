@@ -46,6 +46,8 @@ Ports:
 
 
 #########ADD THE DESIGN DOC########
+
+
 ## Inventory microservice
 
 The Inventory microsevice contains available automobiles and is the single source of truth for what automobiles have been in the inventory of the dealership. It relies on creating a manufacturer, linking models to that manufacturer and then providing additional details such as vin to create a specific automobile in the inventory.
@@ -936,4 +938,4 @@ AutomobileVO:
 --------
 - Consists of VIN Number, has no API endpoint.
 
-- A GET request is made very 60 seconds 
+- A request is made very 60 seconds 
