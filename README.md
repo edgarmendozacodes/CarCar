@@ -789,10 +789,13 @@ Sales is built using 4 models: Sales, Salesperson, Customer, and AutomobileVO. A
 
 Sales:
 - Tracks sale price, sold vehicle's VIN, sales person and customer 
-    - CRUD ["GET", "POST"]
-    http://localhost:8090/api/sales/
+    
+    CREATE SALE
+    Method: POST
+    Endpoint: http://localhost:8090/api/sales/
+    Body: JSON
+    Sample Content:
 
-        ENTER:
         {
             "automobile": "5YJ3E1EAXJF033340",
             "salesperson": "1",
@@ -800,48 +803,82 @@ Sales:
             "price": "10000"
         }
         
-        OUTPUT: 
+    VIEW SALES
+    Method: GET
+    Endpoint: http://localhost:8090/api/sales/
+    Body: JSON
+    Sample Content:
+
         {
-            {
-                "sales": 
-            }
-            "id": 15,
-            "automobile": {
-                "id": 2,
-                "vin": "5YJ3E1EAXJF033340",
-                "sold": true
-            },
-            "salesperson": {
-                "id": 1,
-                "first_name": "Edgar ",
-                "last_name": "Mendoza",
-                "employee_id": "5959"
-            },
-            "customer": {
-                "id": 2,
-                "first_name": "Margot",
-                "last_name": "Robbie",
-                "address": "123 White House Ln",
-                "phone_number": "5556667777"
-            },
-            "price": "10000"
+            "sales": [
+                {
+                    "id": 1,
+                    "automobile": {
+                        "id": 3,
+                        "vin": "5TFEM5F11EX067924",
+                        "sold": false
+                    },
+                    "salesperson": {
+                        "id": 1,
+                        "first_name": "Edgar ",
+                        "last_name": "Mendoza",
+                        "employee_id": "5959"
+                    },
+                    "customer": {
+                        "id": 1,
+                        "first_name": "Edgar",
+                        "last_name": "Mendoza",
+                        "address": "01 Gold St",
+                        "phone_number": "555-555-5555"
+                    },
+                    "price": "10000"
+                },
+                {
+                    "id": 14,
+                    "automobile": {
+                        "id": 2,
+                        "vin": "5YJ3E1EAXJF033340",
+                        "sold": false
+                    },
+                    "salesperson": {
+                        "id": 4,
+                        "first_name": "Lewis",
+                        "last_name": "Tharon",
+                        "employee_id": "3123"
+                    },
+                    "customer": {
+                        "id": 2,
+                        "first_name": "Margot",
+                        "last_name": "Robbie",
+                        "address": "123 White House Ln",
+                        "phone_number": "5556667777"
+                    },
+                    "price": "15000"
+                }
+            ]
         }
 
 
 Salesperson/Salespeople:
 - Tracks salesperson's first name, last name and employee id
-    - CRUD ["GET", "POST"]
 
-    http://localhost:8090/api/salespeople/
+    CREATE SALESPERSON
+    Method: POST
+    Endpoint: http://localhost:8090/api/salespeople/
+    Body: JSON
+    Sample Content:
 
-        ENTER:
         {
             "first_name": "Lewis",
             "last_name": "Tharon",
             "employee_id": "3123"
         }
         
-        RETURNS
+    LIST SALESPEOPLE
+    Method: GET
+    Endpoint: http://localhost:8090/api/salespeople/
+    Body: JSON
+    Sample Content:
         {
             "salesperson": {
                 "id": 4,
@@ -853,28 +890,48 @@ Salesperson/Salespeople:
 
 Customer(s): 
 - Tracks potential customers first name, last name, address, and phone number.
-    - CRUD ["GET", "POST"]
+    
+    CREATE CUSTOMER
+    Method: POST
+    Endpoint: http://localhost:8090/api/customers/
+    Body: JSON
+    Sample Content:
 
-    http://localhost:8090/api/customers/
-
-        ENTER:
         {
             "first_name": "Margot",
             "last_name": "Robbie",
             "address": "123 White House Ln",
             "phone_number": "5556667777"
         }
-        RETURNS:
+
+    LIST CUSTOMERS
+    Method: GET
+    Endpoint: http://localhost:8090/api/customers/
+    Body: JSON
+    Sample Content: 
+        
         {
-	        "customers": [
-		    {
+	    "customers": [
+		{
 			"id": 1,
 			"first_name": "Edgar",
 			"last_name": "Mendoza",
 			"address": "01 Gold St",
 			"phone_number": "555-555-5555"
-		    }]
-            }
+		},
+		{
+			"id": 2,
+			"first_name": "Margot",
+			"last_name": "Robbie",
+			"address": "123 White House Ln",
+			"phone_number": "5556667777"
+		}
+	    ]
+    }
 
-Port: 8090:8000
-URL: http://localhost:8090/api/
+AutomobileVO:
+- Consists of VIN Number, has no API endpoint.
+
+- A GET request is made very 60 seconds 
+
+
