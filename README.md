@@ -44,10 +44,9 @@ Ports:
     Service: 8080
     Sales: 8090
 
+![Domain Design Document](<Project Beta Domain Driven Design.png>)
 
 #########ADD THE DESIGN DOC########
-
-
 ## Inventory microservice
 
 The Inventory microsevice contains available automobiles and is the single source of truth for what automobiles have been in the inventory of the dealership. It relies on creating a manufacturer, linking models to that manufacturer and then providing additional details such as vin to create a specific automobile in the inventory.
@@ -781,13 +780,13 @@ Appointment:
 
 Planned out the route of attack on the project
 - Excalidraw: Visualize the problem, review points of friction, and begin to think of the code
-- Pseudocode: Commented out - began 
-- Reviewed Conference Go SPA and Wardrobify to mimic structure and data calling. 
-- Youtubed Django and Rest videos while working on project to get a better grasp on the frameworks 
+- Pseudocode: Commented out - began
+- Reviewed Conference Go SPA and Wardrobify to mimic structure and data calling.
+- Youtubed Django and Rest videos while working on project to get a better grasp on the frameworks
 
-The Sales microservice contains 
+The Sales microservice contains
 
-Sales is built using 4 models: Sales, Salesperson, Customer, and AutomobileVO. AutomobileVO is a Value Object that polls the monolith to recieve data every 60 seconds regarding inventory. 
+Sales is built using 4 models: Sales, Salesperson, Customer, and AutomobileVO. AutomobileVO is a Value Object that polls the monolith to recieve data every 60 seconds regarding inventory.
 
 Sales:
 
@@ -804,7 +803,7 @@ Sales:
                 "customer": "2",
                 "price": "10000"
             }
-            
+
     VIEW SALES
         Method: GET
         Endpoint: http://localhost:8090/api/sales/
@@ -875,7 +874,7 @@ Salesperson/Salespeople:
                 "last_name": "Tharon",
                 "employee_id": "3123"
             }
-        
+
     LIST SALESPEOPLE
 
         Method: GET
@@ -891,9 +890,9 @@ Salesperson/Salespeople:
                 }
             }
 
-Customer(s): 
+Customer(s):
 
-    
+
     CREATE CUSTOMER
 
         Method: POST
@@ -913,8 +912,8 @@ Customer(s):
         Method: GET
         Endpoint: http://localhost:8090/api/customers/
         Body: JSON
-        Sample Content: 
-            
+        Sample Content:
+
             {
             "customers": [
             {
@@ -938,4 +937,4 @@ AutomobileVO:
 --------
 - Consists of VIN Number, has no API endpoint.
 
-- A request is made very 60 seconds 
+- A GET request is made very 60 seconds 
