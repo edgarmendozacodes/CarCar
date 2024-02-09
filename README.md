@@ -799,8 +799,12 @@ Sales:
             "customer": "2",
             "price": "10000"
         }
+        
         OUTPUT: 
         {
+            {
+                "sales": 
+            }
             "id": 15,
             "automobile": {
                 "id": 2,
@@ -836,6 +840,7 @@ Salesperson/Salespeople:
             "last_name": "Tharon",
             "employee_id": "3123"
         }
+        
         RETURNS
         {
             "salesperson": {
@@ -851,6 +856,7 @@ Customer(s):
     - CRUD ["GET", "POST"]
 
     http://localhost:8090/api/customers/
+
         ENTER:
         {
             "first_name": "Margot",
@@ -860,12 +866,15 @@ Customer(s):
         }
         RETURNS:
         {
-            "id": 2,
-            "first_name": "Margot",
-            "last_name": "Robbie",
-            "address": "123 White House Ln",
-            "phone_number": "5556667777"
-        }
+	        "customers": [
+		    {
+			"id": 1,
+			"first_name": "Edgar",
+			"last_name": "Mendoza",
+			"address": "01 Gold St",
+			"phone_number": "555-555-5555"
+		    }]
+            }
 
 Port: 8090:8000
 URL: http://localhost:8090/api/
