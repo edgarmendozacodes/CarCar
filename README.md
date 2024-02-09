@@ -776,5 +776,96 @@ Appointment:
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+
+Planned out the route of attack on the project
+- Excalidraw: Visualize the problem, review points of friction, and begin to think of the code
+- Pseudocode: Commented out - began 
+- Reviewed Conference Go SPA and Wardrobify to mimic structure and data calling. 
+- Youtubed Django and Rest videos while working on project to get a better grasp on the frameworks 
+
+The Sales microservice contains 
+
+Sales is built using 4 models: Sales, Salesperson, Customer, and AutomobileVO. AutomobileVO is a Value Object that polls the monolith to recieve data every 60 seconds regarding inventory. 
+
+Sales:
+- Tracks sale price, sold vehicle's VIN, sales person and customer 
+    - CRUD ["GET", "POST"]
+    http://localhost:8090/api/sales/
+
+        ENTER:
+        {
+            "automobile": "5YJ3E1EAXJF033340",
+            "salesperson": "1",
+            "customer": "2",
+            "price": "10000"
+        }
+        OUTPUT: 
+        {
+            "id": 15,
+            "automobile": {
+                "id": 2,
+                "vin": "5YJ3E1EAXJF033340",
+                "sold": true
+            },
+            "salesperson": {
+                "id": 1,
+                "first_name": "Edgar ",
+                "last_name": "Mendoza",
+                "employee_id": "5959"
+            },
+            "customer": {
+                "id": 2,
+                "first_name": "Margot",
+                "last_name": "Robbie",
+                "address": "123 White House Ln",
+                "phone_number": "5556667777"
+            },
+            "price": "10000"
+        }
+
+
+Salesperson/Salespeople:
+- Tracks salesperson's first name, last name and employee id
+    - CRUD ["GET", "POST"]
+
+    http://localhost:8090/api/salespeople/
+
+        ENTER:
+        {
+            "first_name": "Lewis",
+            "last_name": "Tharon",
+            "employee_id": "3123"
+        }
+        RETURNS
+        {
+            "salesperson": {
+                "id": 4,
+                "first_name": "Lewis",
+                "last_name": "Tharon",
+                "employee_id": "3123"
+            }
+        }
+
+Customer(s): 
+- Tracks potential customers first name, last name, address, and phone number.
+    - CRUD ["GET", "POST"]
+
+    http://localhost:8090/api/customers/
+        ENTER:
+        {
+            "first_name": "Margot",
+            "last_name": "Robbie",
+            "address": "123 White House Ln",
+            "phone_number": "5556667777"
+        }
+        RETURNS:
+        {
+            "id": 2,
+            "first_name": "Margot",
+            "last_name": "Robbie",
+            "address": "123 White House Ln",
+            "phone_number": "5556667777"
+        }
+
+Port: 8090:8000
+URL: http://localhost:8090/api/

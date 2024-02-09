@@ -36,7 +36,7 @@ function App() {
           <Route path="sales">
             <Route path="list" element={<ListAllSales />} />
             <Route path="create" element={<FormAllSales />} />
-            {/* <Route path="history" element={<ListSaleHistory />} /> */}
+            <Route path="history" element={<ListSaleHistory />} />
           </Route>
               <Route path="/" element={<MainPage />} />
               <Route path="automobiles/list/" element={<AutomobileList/>} />
