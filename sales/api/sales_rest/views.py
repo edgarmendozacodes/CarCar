@@ -5,41 +5,47 @@ from django.http import JsonResponse
 from .models import SalesPerson, Customer, AutomobileVO, Sale
 from common.json import ModelEncoder
 
-# Create your views here.
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = [
+        "id", 
+        "vin",
+        "sold",
+    ]
 class SalesPersonEncoder(ModelEncoder):
     model = SalesPerson
     properties = [
+        "id",
         "first_name",
         "last_name", 
         "employee_id",
-        "id"
     ]
 
 class CustomerEncoder(ModelEncoder):
     model= Customer
     properties = [
+        "id",
         "first_name", 
         "last_name", 
         "address",
-        "phone_number"
+        "phone_number",
     ]
 
 class SalesEncoder(ModelEncoder):
     model = Sale
     properties = [
-        "price",
+        "id",
         "automobile",
         "salesperson",
-        "customer"
+        "customer",
+        "price",
     ]
     encoders = {
-        "automobile": AutomobileVO,
-        "salesperson": SalesPersonEncoder,
-        "Customer": CustomerEncoder,
+        "automobile": AutomobileVOEncoder(),
+        "salesperson": SalesPersonEncoder(),
+        "customer": CustomerEncoder(),
     }
-    # nested serialization
-    # django-REST-framework.org
-    # many to many relationships -> djangoproject
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_salesperson(request):
@@ -59,8 +65,6 @@ def api_list_salesperson(request):
             encoder=SalesPersonEncoder,
             safe=False,
         )
-# POST: Loads JSON data, creates new salesperson -> encoder converts data 
-# salesperson object to JSON Data. safe=false (need to clarify)  
 
 @require_http_methods(["GET", "POST"])
 def api_list_customer(request):
@@ -79,6 +83,7 @@ def api_list_customer(request):
             encoder=CustomerEncoder,
             safe=False,
         )
+
 @require_http_methods(["GET", "POST"])
 def api_list_sale(request):
     if request.method == "GET":
@@ -86,13 +91,19 @@ def api_list_sale(request):
         return JsonResponse(
             {"sales": sales},
             encoder = SalesEncoder, 
+            safe=False
         )
-        # New Sales are Sales
-        # GET: Retrieves list using objects.all, then JsonResponse, ModelEncoder
-        # takes data and serializes queryset into JSONFormat  
     else: 
         content = json.loads(request.body) 
+
         try: # salesperson lookup, 404 error if not found - by id
+            automobile_id=content['automobile']
+            automobile=AutomobileVO.objects.get(vin=automobile_id)
+            content['automobile'] = automobile
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse({'message': 'Automobile does not exist'}, status = 404 )
+        
+        try:
             salesperson_id = content['salesperson']
             salesperson = SalesPerson.objects.get(id=salesperson_id)
             content['salesperson']=salesperson
@@ -100,28 +111,15 @@ def api_list_sale(request):
             return JsonResponse({"message": "No Salesperson found!"}, status = 404)
         
         try:
-            id=content["customer"]
-            customer = Customer.objects.get(id=id)
+            customer_id=content["customer"]
+            customer = Customer.objects.get(id=customer_id)
             content["customer"]=customer
         except Customer.DoesNotExist:
             return JsonResponse({"message": "No Customer found!"}, status = 404)
-
-        try: # vehicle information: VIN
-            vin = content['vin']
-            vin = AutomobileVO.objects.get(vin=vin) 
-            content["vin"] = vin
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse({"message": "No Automobile found!"}, status = 404)
-
         
         sale = Sale.objects.create(**content)
         return JsonResponse(
             sale,
-            # {"sale": sale},
             encoder=SalesEncoder,
             safe=False,
         )
-        # nested serialization
-        # django-REST-framework.org
-        # many to many relationships -> djangoproject
-    

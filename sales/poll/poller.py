@@ -23,9 +23,9 @@ def get_automobiles():
             vin=automobile['vin'], 
             defaults={
                 'sold': automobile['sold'],
+                'id':automobile['id']
             }
         )
-    
 
 def poll():
     while True:

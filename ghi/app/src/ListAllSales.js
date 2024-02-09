@@ -32,13 +32,13 @@ function ListAllSales() {
                         </tr>
                     </thead>
                     <tbody>
-                        {salesData?.map((sales) => (
+                        {salesData.map((sales) => (
                             <tr key={sales.id}>
                                 <td>{sales.salesperson.employee_id}</td>
-                                <td>{sales.salesperson.first_name}</td>
-                                <td>{sales.salesperson.last_name}</td>
-                                <td>{sales.autombile.vin}</td>
-                                <td>{sales.price}</td>
+                                <td>{sales.salesperson.first_name} {sales.salesperson.last_name}</td>
+                                <td>{sales.customer.first_name} {sales.customer.last_name}</td>
+                                <td>{sales.automobile.vin}</td>
+                                <td>${sales.price}</td>
                             </tr>
                         ))}
                     </tbody>

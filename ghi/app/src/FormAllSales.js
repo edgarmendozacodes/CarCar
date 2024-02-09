@@ -39,22 +39,22 @@ function FormAllSales() {
             data.customer=customer;
             data.price=price;
 
-        // const salesUrl = 'http://localhost:8090/api/sales/' // Site is up & ready to recieve information
+        const salesUrl = 'http://localhost:8090/api/sales/' // Site is up & ready to recieve information
         
-        // const fetchConfig = {
-        //     method: "post",
-        //     body: JSON.stringify(data),
-        //     headers: {'Content-Type': 'application/json'}
-        // }
+        const fetchConfig = {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        }
        
-        // const response = await fetch(salesUrl, fetchConfig);
-        // console.log(response)
-        // if (response.ok) {
-        //     setPrice('');
-        //     setAutomobile('');
-        //     setSalesperson('');
-        //     setCustomer('');
-        // };     
+        const response = await fetch(salesUrl, fetchConfig);
+        console.log(response)
+        if (response.ok) {
+            setPrice('');
+            setAutomobile('');
+            setSalesperson('');
+            setCustomer('');
+        };     
         console.log(data)
     }
 
@@ -113,7 +113,7 @@ function FormAllSales() {
                             <select required value={salesperson} onChange={handleSalespersonChange}  placeholder="Salesperson" type="text" name="salesperson" id="salesperson" className="form-control" >
                             <option value=''> Select a Salesperson .. </option>
                             {salespersons.map(salesperson => {return (
-                                <option key= {salesperson.id} value = {salesperson.employee_id} > {salesperson.first_name} {salesperson.last_name} </option>
+                                <option key= {salesperson.id} value = {salesperson.id} > {salesperson.first_name} {salesperson.last_name} </option>
                             )})}
                             </select>
                         </div>
